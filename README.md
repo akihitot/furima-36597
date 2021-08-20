@@ -29,7 +29,7 @@ Things you may want to cover:
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false, unique:true |
 | encrypted_password | string | null: false |
 | first_name         | string | null: false |
 | last_name          | string | null: false |
@@ -49,16 +49,16 @@ has_many :purchases
 | name               | string | null: false |
 | explanation        | text   | null: false |
 | category           | string | null: false |
-| status             | string | null: false |
-| shipping_charge    | string | null: false |
-| item_prefecture    | string | null: false |
-| days_to_ship       | string | null: false |
+| status_id          | integer| null: false |
+| shipping_charge_id | integer| null: false |
+| prefecture_id      | integer| null: false |
+| days_to_ship_id    | integer| null: false |
 | price              | integer| null: false |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
-has_one :purchases
+has_one :purchase
 
 ## purchases テーブル
 
@@ -72,17 +72,17 @@ belongs_to :user
 belongs_to :item
 has_one :shipping
 
-## shipping テーブル
+## shippings テーブル
 
 | Column                 | Type       | Options     |
 | ---------------------- | ---------- | ----------- |
 | post_code              | string     | null: false |
-| shipping_prefecture    | string     | null: false |
+| prefecture_id          | integer    | null: false |
 | city                   | string     | null: false |
 | address                | string     | null: false |
 | building               | string     |             |
-| telephone              | integer    | null: false |
+| telephone              | string     | null: false |
 | purchase               | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :purchases
+belongs_to :purchase
