@@ -8,11 +8,12 @@ FactoryBot.define do
     prefecture_id               { 2 }
     days_to_ship_id             { 2 }
     price                       { 300 }
-    
+
     association :user
 
     after(:build) do |item|
-      item.image.attach(io: File.open('app/assets/images/google-play.png'), filename: 'google-play.png', content_type: 'image/png')
+      item.image.attach(io: File.open('app/assets/images/google-play.png'), filename: 'google-play.png',
+                        content_type: 'image/png')
     end
   end
 end
