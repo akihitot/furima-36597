@@ -1,15 +1,18 @@
 class Item < ApplicationRecord
-
-  validates :name, presence: true
-  validates :explanation, presence: true
-  validates :price, presence: true, inclusion: { in: 300..9999999 }, format: {with: /\A[0-9]+\z/ }
-  validates :image, presence: true
+  with_options presence: true do
+      validates :name
+      validates :explanation
+      validates :image
+          with_options numericality: { other_than: 1 , message: "can't be blank" } do
+            validates :category_id
+            validates :status_id
+            validates :shipping_charge_id
+            validates :prefecture_id
+            validates :days_to_ship_id
+          end
+  end
   
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :status_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :shipping_charge_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :days_to_ship_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :price, presence: true, inclusion: { in: 300..9999999 }, format: {with: /\A[0-9]+\z/ }
   
   has_one_attached :image
   belongs_to :user
