@@ -44,14 +44,14 @@ class ItemsController < ApplicationController
                                  :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
 
-  def move_to_index
+  def get_item_record
     @item = Item.find(params[:id])
+  end
+  
+  def move_to_index
+      get_item_record
      if @item.user != current_user
       redirect_to action: :index
      end
-  end
-
-  def get_item_record
-    @item = Item.find(params[:id])
   end
 end
