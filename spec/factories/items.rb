@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    name                        { "pc" }
-    explanation                 { "硬い" }
+    name                        { 'pc' }
+    explanation                 { '硬い' }
     category_id                 { 2 }
     status_id                   { 2 }
     shipping_charge_id          { 2 }
