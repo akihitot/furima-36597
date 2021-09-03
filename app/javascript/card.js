@@ -19,8 +19,6 @@ const pay = () => {
       exp_month: formData.get("purchase_shipping[exp_month]"),
       exp_year: `20${formData.get("purchase_shipping[exp_year]")}`,
     };
-
-    console.log(card);
     //カード情報をPAY.JP側に送りトークン化するメソッド
     //cardは、PAY.JP側に送るカードの情報
     //第二引数のcallback(status,response)には、PAY.JP側からトークンが送付された後に実行する処理

@@ -15,6 +15,7 @@ RSpec.describe PurchaseShipping, type: :model do
       end
       it 'buildingは空でも保存できること' do
         @purchase_shipping.building = ''
+        expect(@purchase_shipping).to be_valid
       end
     end
 
